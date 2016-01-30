@@ -187,7 +187,7 @@ class Arr
 	{
 		return array_map(function($value) use ($key)
 		{
-			return is_object($value) ? $value->$key : $value[$key];
+			return is_object($value) ? $value->{$key} : $value[$key];
 		}, $array);
 	}
 }
