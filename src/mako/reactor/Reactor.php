@@ -313,7 +313,7 @@ class Reactor
 		}
 		catch(ReflectionException $e)
 		{
-			$this->cli->stderr(vsprintf("The '%s' task does not exist.", array(end((explode('\\', $task))))));
+			$this->cli->stderr(vsprintf("The '%s' task does not exist.", array_slice(explode('\\', $task), -1)));
 
 			return false;
 		}

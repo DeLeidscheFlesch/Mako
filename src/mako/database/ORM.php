@@ -234,7 +234,7 @@ abstract class ORM
 	{
 		if($this->tableName === null)
 		{
-			$this->tableName = I18n::pluralize(Str::camel2underscored(end((explode('\\', get_class($this))))), null, $this->language);
+			$this->tableName = I18n::pluralize(Str::camel2underscored(array_slice(explode('\\', get_class($this)), -1)[0]), null, $this->language);
 		}
 		
 		return $this->tableName;
@@ -273,7 +273,7 @@ abstract class ORM
 
 	public function getForeignKey()
 	{
-		return strtolower(end((explode('\\', get_class($this))))) . '_id';
+		return strtolower(array_slice(explode('\\', get_class($this)), -1)[0]) . '_id';
 	}
 
 	/**

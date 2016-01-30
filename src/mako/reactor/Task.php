@@ -74,7 +74,7 @@ abstract class Task
 
 	protected function displayTaskInfo()
 	{
-		$taskName = strtolower(end((explode('\\', get_class($this)))));
+		$taskName = strtolower(array_slice(explode('\\', get_class($this)), -1)[0]);
 
 		$longestName = max(array_map('strlen', array_keys(static::$taskInfo))) + strlen($taskName) + 3;
 
