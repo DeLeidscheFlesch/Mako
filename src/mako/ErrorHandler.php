@@ -75,6 +75,10 @@ class ErrorHandler
 		
 		set_exception_handler(function($e)
 		{
+			if ($e instanceof \Error) {
+				$e = new ErrorException($e->getMessage(), $e->getCode(), 0, $e->getFile(), $e->getLine());
+			}
+
 			ErrorHandler::handler($e);
 		});
 
